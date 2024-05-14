@@ -1,22 +1,43 @@
 <template>
-    <el-row>
+  <SearchMultiUAV></SearchMultiUAV>
+  <el-row>
     <el-col>
       <el-button type="primary" @click="dialogVisible = true">
         新增
-    </el-button>    
+      </el-button>
     </el-col>
   </el-row>
-  <el-dialog v-if="dialogVisible" v-model="dialogVisible" title="新增" width="800" center
-  destroy-on-close
-  lock-scroll
-  :close-on-click-modal="false"
-  >      
-      <FormMultiUAV @close="close" ></FormMultiUAV>     
+  <el-dialog v-if="dialogVisible" v-model="dialogVisible" title="新增" width="800" center destroy-on-close lock-scroll
+    :close-on-click-modal="false">
+    <FormMultiUAV @close="close"></FormMultiUAV>
   </el-dialog>
 
-  
- 
-  <el-table  :data="tableData" border style="width: 100%" class="mt-4  table-hover" ref="multipleTableRef"
+  <el-dialog v-if="viewVisible" v-model="viewVisible" title="查看" width="1200" center destroy-on-close lock-scroll
+    :close-on-click-modal="false">
+    <el-table :data="tableData2" border style="width: 100%" class="my-4  table-hover " ref="multipleTableRef">
+
+
+
+      <el-table-column prop="Type_Target" label="类型" width="180" />
+      <el-table-column prop="Speed" label="型号" />
+      <el-table-column prop="Direction" label="机号" />
+      <el-table-column prop="Direction" label="长" />
+      <el-table-column prop="Direction" label="宽" />
+      <el-table-column prop="Direction" label="高" />
+      <el-table-column prop="Direction" label="重量" />
+      <el-table-column prop="Direction" label="飞行最大航时" />
+
+      <el-table-column prop="Distance_Target" label="使用升限" />
+      <el-table-column prop="Distance_Target" label="最大速度" />
+
+
+    </el-table>
+
+  </el-dialog>
+
+
+
+  <el-table :data="tableData" border style="width: 100%" class="mt-4  table-hover" ref="multipleTableRef"
     @selection-change="handleSelectionChange">
     <el-table-column type="selection" width="55" />
     <!-- <el-table-column prop="date" label="时间" width="180" /> -->
@@ -28,7 +49,7 @@
     <el-table-column label="操作">
       <template #default="props">
         <el-button>生成航迹</el-button>
-        <el-button>查看</el-button>
+        <el-button @click="viewVisible = true">查看</el-button>
         <el-button @click="toEdit(props.row.id)">编辑</el-button>
         <el-button @click="toEdit(props.row.id)">删除</el-button>
       </template>
@@ -37,7 +58,7 @@
 
 
   </el-table>
-  
+
   <div class="mt-4 mb-2 text-center">
     <el-button type="primary">生成航迹</el-button>
     <el-button type="primary">开始</el-button>
@@ -51,9 +72,13 @@
 import { reactive, ref } from 'vue'
 import FormMultiUAV from '@/views/imitatedData/FormMultiUAV.vue';
 
+import SearchMultiUAV from '@/views/searchQuery/SearchMultiUAV.vue';
+
 import type { ComponentSize, FormInstance, FormRules } from 'element-plus'
 const multipleSelection = ref([])
-const dialogVisible =ref(false)
+const dialogVisible = ref(false)
+const viewVisible = ref(false)
+
 const shapeList = reactive([
   { label: '人字形', value: '0' },
   { label: '镖形', value: '1' },
@@ -186,6 +211,37 @@ const close = () => {
   debugger
   dialogVisible.value = false
 }
+
+
+const tableData2 = [
+  {
+    Type_Target: '多旋无人机',
+    Speed: '2',
+    Direction: '96°',
+    Angle_A_Target: '12.1°',
+    Angle_P_Target: '123.1°',
+    Altitude_Target: '10',
+    Distance_Target: '66',
+    Prop_IFF: '1',
+    ThreatRank: '2',
+    ID_Target: 'C',
+    Alarm_Level: '2'
+  },
+  {
+    Type_Target: '多旋无人机',
+    Speed: '2',
+    Direction: '96°',
+    Angle_A_Target: '12.1°',
+    Angle_P_Target: '123.1°',
+    Altitude_Target: '10',
+    Distance_Target: '66',
+    Prop_IFF: '1',
+    ThreatRank: '2',
+    ID_Target: 'C',
+    Alarm_Level: '2'
+  },
+
+]
 </script>
 <style lang="scss" scoped>
 .content {

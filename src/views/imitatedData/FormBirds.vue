@@ -1,5 +1,6 @@
 <template>
-  <el-form ref="ruleFormRef" style="" :model="ruleForm" :rules="rules" label-width="auto" class="demo-ruleForm"
+  <!-- <div class="container-fluid p-4"></div> -->
+  <el-form ref="ruleFormRef" style="" :model="ruleForm" :rules="rules" label-width="auto" class="container-fluid p-4"
     :size="formSize" status-icon>
     <!-- 经度、纬度、高度、速度、方向 -->
     <el-form-item label="鸟群名称" prop="number">
@@ -36,14 +37,14 @@
     </el-form-item>
 
   </el-form>
-  
+
   <div class="text-center">
-      <el-button @click="close">取消</el-button>
-      <el-button type="primary" @click="submitForm(ruleFormRef)">
-          提交
-        </el-button>
-      </div>
-  
+    <el-button @click="close">取消</el-button>
+    <el-button type="primary" @click="submitForm(ruleFormRef)">
+      提交
+    </el-button>
+  </div>
+
 </template>
 
 <script lang="ts" setup>
@@ -143,7 +144,7 @@ const submitForm = async (formEl: FormInstance | undefined) => {
 
 
 
-const close=()=>{
+const close = () => {
   emit('close');
 
 }

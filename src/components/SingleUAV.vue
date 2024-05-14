@@ -1,9 +1,46 @@
 <template>
+  <!-- <div class="">
+    <el-form :model="formSearch" class="p-5" label-position="right" label-width="80px">
+      <el-row>
+        <el-col :span="6">
+          <el-form-item label="类型">
+            <el-select v-model="formSearch.region" placeholder="请选择类型">
+              <el-option label="类型一" value="shanghai"></el-option>
+              <el-option label="类型二" value="beijing"></el-option>
+            </el-select>
+          </el-form-item>
+        </el-col>
+        <el-col :span="6">
+          <el-form-item label="型号">
+            <el-select v-model="formSearch.region" placeholder="请选择型号">
+              <el-option label="型号一" value="shanghai"></el-option>
+              <el-option label="型号二" value="beijing"></el-option>
+            </el-select>
+          </el-form-item>
+        </el-col>
+        <el-col :span="6">
+          <el-form-item label="机号">
+            <el-select v-model="formSearch.region" placeholder="请选择机号">
+              <el-option label="机号一" value="shanghai"></el-option>
+              <el-option label="机号二" value="beijing"></el-option>
+            </el-select>
+          </el-form-item>
+        </el-col>
+        <el-col :span="6" class="text-center">
+          <el-button type="primary" @click="onSubmit">查询</el-button>
+          <el-button type="" @click="onReset">清空</el-button>
+        </el-col>
+      </el-row>
+
+
+    </el-form>
+  </div> -->
+  <SearchSingUAV :option="searchOption" :data="formSearch"></SearchSingUAV>
   <el-row>
     <el-col>
       <el-button type="primary" @click="dialogVisible = true">
         新增
-    </el-button>
+      </el-button>
 
       <!-- <AddDialog :dialogVisible="dialogVisible">
         <FormSingleUAV @close="close" ></FormSingleUAV>
@@ -11,15 +48,12 @@
       </AddDialog> -->
     </el-col>
   </el-row>
-  
-  <el-dialog v-if="dialogVisible" v-model="dialogVisible" title="新增" width="800" center
-  destroy-on-close
-  lock-scroll
-  :close-on-click-modal="false"
-  >
-      
-        <FormSingleUAV @close="close" ></FormSingleUAV>
-        <!-- <template #footer>
+
+  <el-dialog v-if="dialogVisible" v-model="dialogVisible" title="新增" width="800" center destroy-on-close lock-scroll
+    :close-on-click-modal="false">
+
+    <FormSingleUAV @close="close"></FormSingleUAV>
+    <!-- <template #footer>
       <div class="dialog-footer">
         <el-button @click="dialogVisible = false">Cancel</el-button>
         <el-button type="primary" @click="dialogVisible = false">
@@ -27,7 +61,7 @@
         </el-button>
       </div>
     </template> -->
-    </el-dialog>
+  </el-dialog>
 
   <!-- class="table table-striped"> -->
   <el-table :data="tableData" border style="width: 100%" class="mt-4  table-hover" ref="multipleTableRef"
@@ -35,58 +69,19 @@
 
     <el-table-column type="selection" width="55" />
     <!-- <el-table-column prop="date" label="时间" width="180" /> -->
-    <el-table-column prop="Type_Target" label="类型" width="180" />
+    <el-table-column prop="Type_Target" label="类型" width="100" />
+    <el-table-column prop="Type_Target" label="型号" width="100" />
+    <el-table-column prop="Type_Target" label="机号" width="100" />
     <el-table-column prop="Speed" label="航速" />
     <el-table-column prop="Direction" label="航向" />
     <!-- <el-table-column prop="Angle_A_Target" label="方位角" />
    <el-table-column prop="Angle_P_Target" label="俯仰角" /> -->
-   
-    <el-table-column prop="Distance_Target" label="经度" />
-    <el-table-column prop="Distance_Target" label="纬度" />
-    <el-table-column prop="Altitude_Target" label="高度" />
-    <el-table-column prop="Distance_Target" label="时间" />
-  <!--  <el-table-column prop="Prop_IFF" label="敌我属性" >
-     <template #default="props">
-           <span v-if="props.row.Prop_IFF==1">敌方</span>
-           <span v-if="props.row.Prop_IFF==2">己方</span>
-           <span v-if="props.row.Prop_IFF==3">友方</span>
-           <span v-if="props.row.Prop_IFF==4">第三方</span>
-           <span v-if="props.row.Prop_IFF==0">不明确</span>
-         </template>
-</el-table-column>
-<el-table-column prop="ThreatRank" label="威胁等级">
-  <template #default="props">
 
-           <span v-if="props.row.ThreatRank==1">A1</span>
-           <span v-else-if="props.row.ThreatRank==2">A2</span>
-           <span v-else-if="props.row.ThreatRank==3">A3</span>
-           <span v-else-if="props.row.ThreatRank==4">A4</span>
-           <span v-else-if="props.row.ThreatRank==5">A5</span>
-           <span v-else-if="props.row.ThreatRank==51">B1</span>
-           <span v-else-if="props.row.ThreatRank==52">B2</span>
-           <span v-else-if="props.row.ThreatRank==53">B3</span>
-           <span v-else-if="props.row.ThreatRank==54">B4</span>
-           <span v-else-if="props.row.ThreatRank==55">B5</span>
-           <span v-else-if="props.row.ThreatRank==91">C</span>
-           <span v-else-if="props.row.ThreatRank==92">C</span>
-           <span v-else-if="props.row.ThreatRank==93">C</span>
-           <span v-else-if="props.row.ThreatRank==94">C</span>
-           <span v-else-if="props.row.ThreatRank==95">C</span>
-           <span v-else-if="props.row.ThreatRank==255">D</span>
-           <span v-else>{{props.row.ThreatRank}}</span>
-         </template>
-</el-table-column>
-<el-table-column prop="ID_Target" label="来源" width="66">
+    <el-table-column prop="Distance_Target" label="经度" width="100" />
+    <el-table-column prop="Distance_Target" label="纬度" width="100" />
+    <el-table-column prop="Altitude_Target" label="高度" width="100" />
+    <el-table-column prop="Distance_Target" label="时间" width="100" />
 
-</el-table-column>
-<el-table-column label="告警等级">
-  <template #default="props">
-           <span v-if="props.row.Alarm_Level==1">一级告警</span>
-           <span v-else-if="props.row.Alarm_Level==2">二级告警</span>
-           <span v-else-if="props.row.Alarm_Level==3">三级告警</span>
-           <span v-else-if="props.row.Alarm_Level==4">提示</span>
-         </template>
-</el-table-column> -->
     <el-table-column label="操作">
       <template #default="props">
         <el-button>生成航迹</el-button>
@@ -109,9 +104,70 @@
 import { reactive, ref } from 'vue'
 // import AddDialog from './AddDialog.vue';
 import FormSingleUAV from '@/views/imitatedData/FormSingleUAV.vue';
+import SearchSingUAV from '@/views/searchQuery/SearchSingUAV.vue';
 import type { ComponentSize, FormInstance, FormRules } from 'element-plus'
+
 const multipleSelection = ref([])
-const dialogVisible =ref(false)
+const dialogVisible = ref(false)
+const formSearch = reactive({
+  user: '',
+  region: '',
+  user2: ''
+})
+const searchOption = reactive([
+  {
+    label: '类型',
+    prop: 'region',
+
+    inputType: 'select',
+    placeholder: '请输入类型',
+    optionList: [
+      {
+        label: '类型一',
+        value: '0'
+      },
+      {
+        label: '类型二',
+        value: '1'
+      }
+    ]
+  },
+  {
+    inputType: 'select',
+    placeholder: '请输入型号',
+    optionList: [
+      {
+        label: '型号一',
+        value: '0'
+      },
+      {
+        label: '型号二',
+        value: '1'
+      }
+    ]
+  },
+  {
+    inputType: 'select',
+    placeholder: '请输入机号',
+    optionList: [
+      {
+        label: '机号一',
+        value: '0'
+      },
+      {
+        label: '机号二',
+        value: '1'
+      }
+    ]
+  },
+
+])
+const onSubmit = () => {
+  console.log('搜索')
+}
+const onReset = () => {
+  console.log('清空')
+}
 interface RuleForm {
   type: string
   speed: string;

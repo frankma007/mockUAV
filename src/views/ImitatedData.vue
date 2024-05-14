@@ -1,5 +1,5 @@
 <template>
-  <div class="container-fluid">
+  <div class="container-fluid p-4">
     <el-container>
       <el-header>
         <h2 class="mt-2 mb-2">无人机配置</h2>

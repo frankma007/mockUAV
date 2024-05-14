@@ -1,6 +1,6 @@
 <template>
   <div>
-    <el-form ref="ruleFormRef" :model="ruleForm" :rules="rules" label-width="auto" class="demo-ruleForm"
+    <el-form ref="ruleFormRef" :model="ruleForm" :rules="rules" label-width="auto" class="container-fluid p-4"
       :size="formSize" status-icon>
       <el-form-item label="类型" prop="type">
         <el-select v-model="ruleForm.type" placeholder="请选择型号">
@@ -23,28 +23,28 @@
       <el-input v-model="ruleForm.size" />
     </el-form-item> -->
       <el-form-item label="起始经度" prop="longitude">
-        <el-input v-model="ruleForm.longitude" >
+        <el-input v-model="ruleForm.longitude">
           <template #suffix>
             <el-icon class="el-input__icon">°</el-icon>
           </template>
         </el-input>
       </el-form-item>
       <el-form-item label="起始纬度" prop="latitude">
-        <el-input v-model="ruleForm.latitude" >
+        <el-input v-model="ruleForm.latitude">
           <template #suffix>
             <el-icon class="el-input__icon">°</el-icon>
           </template>
         </el-input>
       </el-form-item>
       <el-form-item label="飞行高度" prop="height">
-        <el-input v-model="ruleForm.height" >
+        <el-input v-model="ruleForm.height">
           <template #suffix>
             <el-icon class="el-input__icon">米</el-icon>
           </template>
         </el-input>
       </el-form-item>
       <el-form-item label="飞行速度" prop="speed">
-        <el-input v-model="ruleForm.speed" >
+        <el-input v-model="ruleForm.speed">
           <template #suffix>
             <el-icon class="el-input__icon">米/秒</el-icon>
           </template>
@@ -74,14 +74,14 @@
         </el-button>
       </el-form-item> -->
     </el-form>
-  
+
     <div class="text-center">
       <el-button @click="close">取消</el-button>
       <el-button type="primary" @click="submitForm(ruleFormRef)">
-          提交
-        </el-button>
-      </div>
-    
+        提交
+      </el-button>
+    </div>
+
 
 
 
@@ -209,7 +209,7 @@ const resetForm = (formEl: FormInstance | undefined) => {
   formEl.resetFields()
   // emit('close');
 }
-const close=()=>{
+const close = () => {
   emit('close');
 
 }

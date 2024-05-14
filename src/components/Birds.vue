@@ -1,20 +1,18 @@
 <template>
-      <el-row>
+  <SearchBirds></SearchBirds>
+  <el-row>
     <el-col>
       <el-button type="primary" @click="dialogVisible = true">
         新增
-    </el-button>    
+      </el-button>
     </el-col>
   </el-row>
-  <el-dialog v-if="dialogVisible" v-model="dialogVisible" title="新增" width="800" center
-  destroy-on-close
-  lock-scroll
-  :close-on-click-modal="false"
-  >      
-      <FormBirds @close="close" ></FormBirds>
+  <el-dialog v-if="dialogVisible" v-model="dialogVisible" title="新增" width="800" center destroy-on-close lock-scroll
+    :close-on-click-modal="false">
+    <FormBirds @close="close"></FormBirds>
   </el-dialog>
 
-  <el-table  :data="tableData" border style="width: 100%" class="mt-4  table-hover" ref="multipleTableRef"
+  <el-table :data="tableData" border style="width: 100%" class="mt-4  table-hover" ref="multipleTableRef"
     @selection-change="handleSelectionChange">
     <el-table-column type="selection" width="55" />
     <!-- <el-table-column prop="date" label="时间" width="180" /> -->
@@ -34,7 +32,7 @@
 
 
   </el-table>
-  
+
   <div class="mt-4 mb-2 text-center">
     <el-button type="primary">生成航迹</el-button>
     <el-button type="primary">开始</el-button>
@@ -50,8 +48,8 @@ import FormBirds from '@/views/imitatedData/FormBirds.vue';
 
 import type { ComponentSize, FormInstance, FormRules } from 'element-plus'
 const multipleSelection = ref([])
-const dialogVisible =ref(false)
-
+const dialogVisible = ref(false)
+import SearchBirds from '@/views/searchQuery/SearchBirds.vue';
 
 interface RuleForm {
 
