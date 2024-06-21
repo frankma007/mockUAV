@@ -200,6 +200,7 @@ const tableData = [
 ]
 
 const toEdit = (id: any) => {
+  dialogVisible.value = true
   console.log(id)
 }
 const handleSelectionChange = (val: []) => {

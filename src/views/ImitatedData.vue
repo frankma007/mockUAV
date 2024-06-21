@@ -19,6 +19,9 @@
           <el-tab-pane label="鸟群">
             <Birds></Birds>
           </el-tab-pane>
+          <el-tab-pane label="无人机模拟（新）">
+            <SingleUAV2></SingleUAV2>
+          </el-tab-pane>
           <!-- <el-tab-pane label="Task">Task</el-tab-pane> -->
         </el-tabs>
 
@@ -31,6 +34,7 @@
 
 <script setup lang="ts">
 import SingleUAV from '@/components/SingleUAV.vue'
+import SingleUAV2 from '@/components/SingleUAV2.vue'
 import MultiUAV from '@/components/MultiUAV.vue'
 import Birds from '@/components/Birds.vue'
 

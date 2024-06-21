@@ -45,5 +45,6 @@ declare module 'vue' {
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
     SingleUAV: typeof import('./src/components/SingleUAV.vue')['default']
+    SingleUAV2: typeof import('./src/components/SingleUAV2.vue')['default']
   }
 }

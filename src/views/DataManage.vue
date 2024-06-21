@@ -94,6 +94,7 @@ const tableData = [
 ]
 const toEdit = (id: any) => {
     console.log(id)
+    dialogVisible.value = true
 }
 const handleSelectionChange = (val: []) => {
     multipleSelection.value = val

@@ -353,8 +353,15 @@
           <el-input v-model="ruleForm.number" placeholder="" />
         </el-form-item> -->
         <el-row>
-          <el-col :span="8">
-            <el-form-item :label="`无人机${item}经度`" prop="number">
+          <el-col :span="3">
+            <el-form-item :label="`无人机${item}`" >
+            
+            </el-form-item>
+             
+            
+          </el-col>
+          <el-col :span="7">
+            <el-form-item label="经度" prop="number">
               <el-input v-model="ruleForm.number" placeholder="">
                 <template #suffix>
                   <el-icon class="el-input__icon">°</el-icon>
@@ -362,8 +369,8 @@
               </el-input>
             </el-form-item>
           </el-col>
-          <el-col :span="8">
-            <el-form-item :label="`无人机${item}纬度`" prop="number">
+          <el-col :span="7">
+            <el-form-item label="纬度" prop="number">
               <el-input v-model="ruleForm.number" placeholder="">
                 <template #suffix>
                   <el-icon class="el-input__icon">°</el-icon>
@@ -371,8 +378,8 @@
               </el-input>
             </el-form-item>
           </el-col>
-          <el-col :span="8">
-            <el-form-item :label="`无人机${item}高度`" prop="number">
+          <el-col :span="7">
+            <el-form-item label="高度" prop="number">
               <el-input v-model="ruleForm.number" placeholder="">
                 <template #suffix>
                   <el-icon class="el-input__icon">米</el-icon>

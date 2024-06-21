@@ -52,12 +52,12 @@
   <el-dialog v-if="dialogVisible" v-model="dialogVisible" title="新增" width="800" center destroy-on-close lock-scroll
     :close-on-click-modal="false">
 
-    <FormSingleUAV @close="close"></FormSingleUAV>    
+    <FormSingleUAV2 @close="close"></FormSingleUAV2>    
   </el-dialog>
   <el-dialog v-if="dialogEditor" v-model="dialogEditor"  title="修改" width="800" center destroy-on-close lock-scroll
     :close-on-click-modal="false">
 
-    <FormSingleUAV :id="currentId" @close="close"></FormSingleUAV>    
+    <FormSingleUAV2 :id="currentId" @close="close"></FormSingleUAV2>    
   </el-dialog>
 
   <!-- class="table table-striped"> -->
@@ -100,7 +100,7 @@
 <script lang="ts" setup>
 import { reactive, ref } from 'vue'
 // import AddDialog from './AddDialog.vue';
-import FormSingleUAV from '@/views/imitatedData/FormSingleUAV.vue';
+import FormSingleUAV2 from '@/views/imitatedData/FormSingleUAV2.vue';
 import SearchSingUAV from '@/views/searchQuery/SearchSingUAV.vue';
 import type { ComponentSize, FormInstance, FormRules } from 'element-plus'
 

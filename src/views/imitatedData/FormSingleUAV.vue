@@ -92,12 +92,22 @@
 </template>
 
 <script lang="ts" setup>
-import { reactive, ref } from 'vue'
+import { reactive, ref, onMounted } from 'vue'
 const emit = defineEmits(["close"]);
+const props = defineProps({
+  id: {
+    type: String,
+    default: ''
+  }
+})
 
 
 import type { ComponentSize, FormInstance, FormRules } from 'element-plus'
 const multipleSelection = ref([])
+onMounted(() => {
+  //根据id来获取详情信息 反显到form表单上
+  //id为空 是新增  不为空 则为
+})
 interface RuleForm {
   type: string
   speed: string;
