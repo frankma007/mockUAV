@@ -56,6 +56,16 @@
           </template>
         </el-input>
       </el-form-item>
+      <el-form-item label="无人机群标识" prop="IdentifyNum">
+        <el-select v-model="ruleForm.IdentifyNum">
+        <el-option label="普通无人机"  value="0">
+
+        </el-option>
+        <el-option label="无人机群"  value="1">
+
+        </el-option>
+        </el-select>
+      </el-form-item>
 
       <!-- <el-form-item>
 
@@ -85,6 +95,7 @@
 <script lang="ts" setup>
 import { reactive, ref, onMounted } from 'vue'
 import {post} from '@/assets/utils/api.js';
+import { ElMessage } from "element-plus";
  
 /* post('/api/home').then((rsp)=>{
     console.log(rsp);
@@ -115,7 +126,9 @@ interface RuleForm {
 
   Type_Target: string;
   Latitude_Target: string;
-  Longitude_Target: string
+  Longitude_Target: string;
+  IdentifyNum:string;
+
 
 }
 const typeList = reactive([
@@ -147,7 +160,7 @@ Latitude_Target--纬度
 Longitude_Target--经度 */
 // 374000 	27702	145340	2700	-34660	15	2001	9	3100144627	12143502133
 const ruleForm = reactive<RuleForm>({
-  Distance_Target: '374000',
+  Distance_Target: '550000',
   Altitude_Target: '27702',
   Angle_A_Target: '145340',
   Angle_P_Target: '2700',
@@ -155,9 +168,10 @@ const ruleForm = reactive<RuleForm>({
   ID_Target_Fusion: '',
   Speed: '2001',
 
-  Type_Target: '9',
-  Latitude_Target: '3100144627',
-  Longitude_Target: '12143502133'
+  Type_Target: '2',
+  Latitude_Target: ' 3460949748',   
+  Longitude_Target: '10926780096',
+  IdentifyNum:'1'
 
 
 })
@@ -243,7 +257,17 @@ const submitForm = async (formEl: FormInstance | undefined) => {
 
       // /api/RecognizeAddData
       post('/api/RecognizeAddData',ruleForm).then((rsp: any)=>{
-          console.log(rsp);
+          console.log(rsp.data);
+          if(rsp.data.code ==200){
+            ElMessage({  message:'创建成功',
+        type: 'success',
+      })
+          }else{
+            ElMessage({  message:'接口服务异常错误',
+        type: 'error',
+      })
+          }
+
       })
     } else {
       console.log('error submit!', fields)

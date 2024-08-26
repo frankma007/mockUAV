@@ -1,0 +1,23 @@
+html.dark {
+    /* 自定义深色背景颜色 */
+    --el-bg-color: #081121;
+    /* --el-fill-color: #303030; */
+    --el-fill-color: #111621;
+    --bs-body-bg: #081121;
+    --el-bg-color-overlay: #111621;
+
+    --el-table-tr-bg-color: #1e263d;
+    /* --el-table-tr-bg-color: var(--el-bg-color); */
+    /* --el-text-color-secondary:  #081121; */
+    --el-fill-color-lighter:  #1d243a;
+    --el-color-primary-light-9: #1d243a;
+    --el-fill-color-light: #1d243a;
+    /* --el-color-primary : #3375b9; */
+    /* --el-text-color-secondary: #081121; */
+    /* --el-color-primary:linear-gradient(to bottom, #7ea9f7, #315378); */
+    --el-color-primary-dark-2: #66b1ff;
+    --el-color-primary-light-3: #3375b9;
+    --el-text-color-secondary: #fff;
+    --el-color-primary: #fff;
+   
+  }
