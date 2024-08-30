@@ -18,6 +18,17 @@ html.dark {
     --el-color-primary-dark-2: #66b1ff;
     --el-color-primary-light-3: #3375b9;
     --el-text-color-secondary: #fff;
-    --el-color-primary: #fff;
-   
+    /* --el-color-primary: #fff; */
+    --el-text-color-regular: #fff;
+    --el-border-color: #214d6f;
+    /* --el-color-primary-light-9:  #66b1ff; */
+    --el-input-hover-border-color:  #66b1ff;
+    --el-text-color-placeholder: #fff;
+    /* --el-color-primary */
+    --el-fill-color-blank: rgba(255, 255, 255, 0.3);
   }
+  :root{
+    color-scheme: dark;
+    --el-border-color-hover:#66b1ff;
+  }
+  

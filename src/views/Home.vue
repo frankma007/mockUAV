@@ -6,11 +6,11 @@
         <p><router-link to="/ImitatedData" class="text item">无人机模拟数据配置</router-link></p>
       </el-card> -->
     
-      <Navi />
+      <!-- <Navi /> -->
    
   <!-- </div> -->
   <!-- <div class="container-fluid">      -->
-  <el-tabs
+  <!-- <el-tabs
     v-model="editableTabsValue"
     type="border-card"
     class="demo-tabs "
@@ -25,16 +25,16 @@
       name="1"
     >
     <Page01 />
-    </el-tab-pane>
-    <el-tab-pane 
+    </el-tab-pane> -->
+    <!-- <el-tab-pane 
     
      
       label="调度运行"
       name="2"
-    >
+    > -->
     <Page02 />
-    </el-tab-pane>
-  </el-tabs>
+    <!-- </el-tab-pane>
+  </el-tabs> -->
   <!-- </div> -->
 </template>
 

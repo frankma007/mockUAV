@@ -9,12 +9,13 @@ import {
   initMeasureControl,
 } from "@/assets/js/playMapLayer.js";
 import L from "leaflet";
-
+import { mapState, mapMutations } from "vuex";
 export default {
   data(){
     return{
 
       map: null,
+      currentBaseLayer: "", // 当前选择的底图
     uiConfig: {
         title: "",
         logoIconUrl: "",
@@ -532,7 +533,9 @@ export default {
   },
   mounted(){
     this.map = initMyMap("mapId", this.uiConfig.mapConfig);
-
+    // this.currentBaseLayer = this.uiConfig.mapConfig.defaultBaseLayer;
+    // this.changeState({ state: "baseLayerName", value: this.currentBaseLayer });
+    this.$store.commit("equipment/changeMapData", this.map);
 
 
 
@@ -593,18 +596,21 @@ let circle3 = L.circle([22.114353, 113.544569], 300,{
 
   },
   methods:{
+    ...mapMutations("config", ["changeState"]),
   },
 
 }
 </script>
 <style lang="scss" scoped>
 #mapId{
-  border-radius: 3px;
-  position:absolute;
-  left:3px;top:3px;
-  border:4px;
-  width: calc(100% - 6px);
-  height:calc(100% - 6px);
+  /* border-radius: 3px; */
+  /* position:absolute; */
+  /* left:3px;top:3px; */
+  /* border:4px; */
+  /* width: calc(100% - 6px);
+  height:calc(100% - 6px); */
+  width: 100%;
+  height:100%;
 }
 
  .leaflet-control-attribution.leaflet-control {
